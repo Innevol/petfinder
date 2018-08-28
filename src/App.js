@@ -8,21 +8,58 @@ const petfinder = pf({
   secret: process.env.API_SECRET
 });
 
-console.log(process.env.API_KEY, process.env.API_SECRET);
-
 class App extends React.Component {
-  componentDidMount() {
-    const prom = petfinder.breed.list({ animal: "dog" });
+  constructor(props) {
+    super(props);
 
-    prom.then(console.log, console.error);
+    this.state = {
+      pets: []
+    };
+  }
+  componentDidMount() {
+    petfinder.pet
+      .find({ output: "full", location: "Atlanta, GA" })
+      .then(data => {
+        let pets;
+
+        if (data.petfinder.pets && data.petfinder.pets.pet) {
+          if (Array.isArray(data.petfinder.pets.pet)) {
+            pets = data.petfinder.pets.pet;
+          } else {
+            pets = [data.petfinder.pets.pet];
+          }
+        } else {
+          pets = [];
+        }
+
+        this.setState({
+          pets
+        });
+      });
   }
   render() {
     return (
       <div>
         <h1>Adopt Me!</h1>
-        <Pet name="Sunny" animal="Bird" breed="Sun Conure" />
+        <div>
+          {this.state.pets.map(pet => {
+            let breed;
+            if (Array.isArray(pet.breeds.breed)) {
+              breed = pet.breeds.breed.join(", ");
+            } else {
+              breed = pet.breeds.breed;
+            }
+            return (
+              <Pet animal={pet.animal} name={pet.name} breed={pet.breed} />
+            );
+          })}
+        </div>
+        {/* <Pet name="Sunny" animal="Bird" breed="Sun Conure" />
         <Pet name="Mango" animal="Bird" breed="Sun Conure" />
-        <Pet name="Luna" animal="Dog" breed="Mixed" />
+        <Pet name="Luna" animal="Dog" breed="Mixed" /> */}
+        {/* <pre>
+          <code>{JSON.stringify(this.state, null, 4)}</code>
+        </pre> */}
       </div>
     );
   }
