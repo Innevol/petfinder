@@ -5,7 +5,7 @@
 .env
 
 # DIST Files
-dist/
+dist
 
 # Node_Modules Files
 node_modules
@@ -15,3 +15,6 @@ gitattributes
 
 # Package Files
 package-lock.json
+
+# VS Code Files
+.vscode
