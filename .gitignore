@@ -1,6 +1,17 @@
-#.cache
-#.env
-#dist/
-#node_modules
-#gitattributes
-#package-lock.json
+# Cache Files
+.cache
+
+# ENV Files
+.env
+
+# DIST Files
+dist/
+
+# Node_Modules Files
+node_modules
+
+# GitAttributes File
+gitattributes
+
+# Package Files
+package-lock.json
