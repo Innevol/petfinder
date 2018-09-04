@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --silent",
+    "test:update": "jest --silent -u",
+    "test:watch": "jest --silent --watch",
+    "test:coverage": "jest --silent --coverage",
     "format": "prettier --write \"src/**/*.{js,jsx,css,json}\"",
     "format-check": "prettier --list-different \"src/**/*.{js,jsx,css,json}\"",
     "lint": "eslint \"/**/*.{js,jsx}\"",
@@ -25,8 +28,11 @@
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-prettier": "^2.6.2",
     "eslint-plugin-react": "^7.11.1",
+    "i": "^0.3.6",
+    "jest": "^23.5.0",
     "parcel-bundler": "^1.9.7",
-    "prettier": "^1.14.2"
+    "prettier": "^1.14.2",
+    "react-test-renderer": "^16.4.2"
   },
   "dependencies": {
     "@reach/router": "^1.1.1",
