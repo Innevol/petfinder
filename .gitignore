@@ -1,6 +1,9 @@
 # Cache Files
 .cache
 
+# Mac OS X Files
+.DS_Store
+
 # ENV Files
 .env
 
