@@ -1,4 +1,4 @@
-import react from "React";
+import React from "React";
 import { createPortal } from "react-dom";
 
 const modalRoot = document.getElementById("modal");
